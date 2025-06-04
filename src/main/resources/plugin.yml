@@ -1,0 +1,4 @@
+name: SmoothXRayDetector
+version: '${project.version}'
+main: com.smoothresources.smoothxraydetector.SmoothXRayDetector
+api-version: '1.16'
