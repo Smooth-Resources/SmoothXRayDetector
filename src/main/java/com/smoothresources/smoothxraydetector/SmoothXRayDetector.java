@@ -4,8 +4,10 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.smoothresources.smoothbase.common.file.YAMLFile;
 import com.smoothresources.smoothbase.paper.file.PaperYAMLFile;
+import com.smoothresources.smoothxraydetector.listener.BlockBreakListener;
 import com.smoothresources.smoothxraydetector.module.ConfigurationModule;
 import com.smoothresources.smoothxraydetector.module.SmoothXRayDetectorModule;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class SmoothXRayDetector extends JavaPlugin {
@@ -22,6 +24,9 @@ public final class SmoothXRayDetector extends JavaPlugin {
                 new SmoothXRayDetectorModule(this),
                 new ConfigurationModule(config, messages)
         );
+
+        BlockBreakListener blockBreakListener = injector.getInstance(BlockBreakListener.class);
+        Bukkit.getPluginManager().registerEvents(blockBreakListener, this);
     }
 
     @Override
