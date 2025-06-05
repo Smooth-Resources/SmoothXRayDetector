@@ -4,17 +4,17 @@ import org.bukkit.Location;
 
 import java.time.Instant;
 
-public class Record {
+public class Sample {
 
     private final Instant time;
     private final Location location;
 
-    public Record(Instant time, Location location) {
+    public Sample(Instant time, Location location) {
         this.time = time;
         this.location = location;
     }
 
-    public Record(Location location) {
+    public Sample(Location location) {
         this.time = Instant.now();
         this.location = location;
     }
