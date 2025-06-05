@@ -1,6 +1,5 @@
 package com.smoothresources.smoothxraydetector.entity;
 
-import com.google.gson.annotations.SerializedName;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 
@@ -8,21 +7,13 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.UUID;
 
 public class User {
 
-    @SerializedName("_id")
-    private final UUID id;
     private final HashMap<Material, List<Sample>> samples;
 
-    public User(UUID id) {
-        this.id = id;
+    public User() {
         this.samples = new HashMap<>();
-    }
-
-    public UUID getId() {
-        return id;
     }
 
     public HashMap<Material, List<Sample>> getSamples() {

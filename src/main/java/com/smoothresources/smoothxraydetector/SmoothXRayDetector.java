@@ -5,6 +5,8 @@ import com.google.inject.Injector;
 import com.smoothresources.smoothbase.common.file.YAMLFile;
 import com.smoothresources.smoothbase.paper.file.PaperYAMLFile;
 import com.smoothresources.smoothxraydetector.listener.BlockBreakListener;
+import com.smoothresources.smoothxraydetector.listener.PlayerJoinListener;
+import com.smoothresources.smoothxraydetector.listener.PlayerQuitListener;
 import com.smoothresources.smoothxraydetector.module.ConfigurationModule;
 import com.smoothresources.smoothxraydetector.module.SmoothXRayDetectorModule;
 import org.bukkit.Bukkit;
@@ -26,7 +28,12 @@ public final class SmoothXRayDetector extends JavaPlugin {
         );
 
         BlockBreakListener blockBreakListener = injector.getInstance(BlockBreakListener.class);
+        PlayerJoinListener playerJoinListener = injector.getInstance(PlayerJoinListener.class);
+        PlayerQuitListener playerQuitListener = injector.getInstance(PlayerQuitListener.class);
+
         Bukkit.getPluginManager().registerEvents(blockBreakListener, this);
+        Bukkit.getPluginManager().registerEvents(playerJoinListener, this);
+        Bukkit.getPluginManager().registerEvents(playerQuitListener, this);
     }
 
     @Override
