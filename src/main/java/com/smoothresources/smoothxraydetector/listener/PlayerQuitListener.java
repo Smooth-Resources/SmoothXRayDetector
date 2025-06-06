@@ -13,7 +13,7 @@ public class PlayerQuitListener implements Listener {
     private UserService userService;
 
     @EventHandler
-    public void onJoin(PlayerQuitEvent event) {
-        userService.handleJoin(event.getPlayer());
+    public void onQuit(PlayerQuitEvent event) {
+        userService.handleQuit(event.getPlayer());
     }
 }
