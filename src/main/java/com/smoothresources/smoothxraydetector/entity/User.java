@@ -40,7 +40,7 @@ public class User {
 
     public double getDistanceBetweenLastSampleByBlock(Block block) {
         List<Sample> materialSamples = getSamplesByMaterial(block.getType());
-        if (materialSamples.size() < 2) {
+        if (materialSamples.isEmpty()) {
             return Integer.MAX_VALUE; // Not enough samples to calculate distance
         }
 
@@ -60,7 +60,7 @@ public class User {
 
         long totalSeconds = 0;
         for (int i = 1; i < materialSamples.size(); i++) {
-            long seconds = Duration.between(materialSamples.get(i).getTime(), materialSamples.get(i - 1).getTime()).toSeconds();
+            long seconds = Duration.between(materialSamples.get(i - 1).getTime(), materialSamples.get(i).getTime()).toSeconds();
             totalSeconds += seconds;
         }
 
