@@ -9,6 +9,7 @@ import com.smoothresources.smoothxraydetector.listener.PlayerJoinListener;
 import com.smoothresources.smoothxraydetector.listener.PlayerQuitListener;
 import com.smoothresources.smoothxraydetector.module.ConfigurationModule;
 import com.smoothresources.smoothxraydetector.module.SmoothXRayDetectorModule;
+import com.smoothresources.smoothxraydetector.module.UserModule;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -24,7 +25,8 @@ public final class SmoothXRayDetector extends JavaPlugin {
 
         injector = Guice.createInjector(
                 new SmoothXRayDetectorModule(this),
-                new ConfigurationModule(config, messages)
+                new ConfigurationModule(config, messages),
+                new UserModule()
         );
 
         BlockBreakListener blockBreakListener = injector.getInstance(BlockBreakListener.class);
