@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.smoothresources</groupId>
-  <artifactId>SmoothSync</artifactId>
+  <artifactId>SmoothXRayDetector</artifactId>
   <version>v1.0.0</version>
   <packaging>jar</packaging>
 
@@ -103,7 +103,7 @@
     <dependency>
       <groupId>com.smoothresources</groupId>
       <artifactId>smoothbase-paper</artifactId>
-      <version>v2.6.0</version>
+      <version>v2.7.0</version>
     </dependency>
     <dependency>
       <groupId>com.google.inject</groupId>
