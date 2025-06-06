@@ -8,6 +8,7 @@ import org.bukkit.Material;
 import org.bukkit.World;
 
 import java.util.Optional;
+import java.util.Set;
 
 public class DetectionUtils {
 
@@ -15,8 +16,11 @@ public class DetectionUtils {
     private PaperYAMLFile config;
 
     public Optional<String> getDetectionIdByMaterialAndWorld(Material material, World world) {
-        String[] detections = (String[]) config.getNode("detections").childrenMap().keySet().stream().map(Object::toString).toArray();
-        for (String detection : detections) {
+
+        Set<Object> detections = config.getNode("detections").childrenMap().keySet();
+        for (Object detectionKey : detections) {
+            String detection = detectionKey.toString();
+
             Material detectionMaterial = config.getMaterial("detections", detection, "material");
             if (!material.equals(detectionMaterial)) continue;
 
