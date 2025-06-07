@@ -1,2 +1,11 @@
+global:
+  not-a-player: "&c&lERROR &8» &fYou must be a player to do that."
+  no-permission: "&c&lERROR &8» &fYou do not have permission."
+  wrong-usage: "&c&lERROR &8» &fUsage: &7%usage%&f."
+
 detection:
   staff-notification: "&4&lXRAY &8» &c%player% &fis probably using X-Ray! &7(detection: %detection%, average seconds: %average%)"
+
+command:
+  reload:
+    success: "&4&lXRAY &8» &fConfiguration reloaded successfully."

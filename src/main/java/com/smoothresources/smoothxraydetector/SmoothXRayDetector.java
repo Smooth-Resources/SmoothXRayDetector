@@ -2,9 +2,13 @@ package com.smoothresources.smoothxraydetector;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
+import com.smoothresources.smoothbase.common.command.CommandUtils;
 import com.smoothresources.smoothbase.common.file.YAMLFile;
+import com.smoothresources.smoothbase.common.task.TaskManager;
+import com.smoothresources.smoothbase.paper.command.PaperCommandManager;
 import com.smoothresources.smoothbase.paper.file.PaperYAMLFile;
 import com.smoothresources.smoothbase.paper.task.PaperTaskManager;
+import com.smoothresources.smoothxraydetector.command.SmoothXRayDetectorCommand;
 import com.smoothresources.smoothxraydetector.listener.BlockBreakListener;
 import com.smoothresources.smoothxraydetector.listener.PlayerJoinListener;
 import com.smoothresources.smoothxraydetector.listener.PlayerQuitListener;
@@ -24,8 +28,9 @@ public final class SmoothXRayDetector extends JavaPlugin {
         YAMLFile config = new PaperYAMLFile(this, "config");
         YAMLFile messages = new PaperYAMLFile(this, "messages");
 
+        TaskManager taskManager = new PaperTaskManager(this);
         injector = Guice.createInjector(
-                new SmoothXRayDetectorModule(this, new PaperTaskManager(this)),
+                new SmoothXRayDetectorModule(this, taskManager),
                 new ConfigurationModule(config, messages),
                 new UserModule()
         );
@@ -37,6 +42,12 @@ public final class SmoothXRayDetector extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(blockBreakListener, this);
         Bukkit.getPluginManager().registerEvents(playerJoinListener, this);
         Bukkit.getPluginManager().registerEvents(playerQuitListener, this);
+
+        CommandUtils commandUtils = new CommandUtils();
+        PaperCommandManager commandManager = new PaperCommandManager(this, taskManager, commandUtils);
+
+        SmoothXRayDetectorCommand detectorCommand = injector.getInstance(SmoothXRayDetectorCommand.class);
+        commandManager.registerCommand(detectorCommand);
     }
 
     @Override
