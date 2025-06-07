@@ -41,7 +41,6 @@ public class BlockBreakListener implements Listener {
 
         int maxSamples = detectionUtils.getAverageMaxSamplesByDetection(detection);
         user.addSample(block, maxSamples);
-        player.sendMessage("[DEBUG] Sample añadida");
 
         int minSamples = detectionUtils.getAverageMinSamplesByDetection(detection);
         if (user.getSamplesAmountByMaterial(material) < minSamples) return;
@@ -49,10 +48,10 @@ public class BlockBreakListener implements Listener {
         double averageSecondsBetweenSamples = user.getAverageSecondsBetweenSamples(material);
         double minAverageSeconds = detectionUtils.getAverageMinSecondsByDetection(detection);
 
-        System.out.println("[DEBUG] AVG Seconds: " + averageSecondsBetweenSamples);
-
         if (averageSecondsBetweenSamples >= minAverageSeconds) return;
 
-        player.sendMessage("[DEBUG] Límite detectado.");
+        detectionUtils.sendXRayDetectedWebhook(player, detection, averageSecondsBetweenSamples);
+        detectionUtils.executeDetectionCommands(player, detection, averageSecondsBetweenSamples);
+        detectionUtils.sendDetectionStaffNotification(player, detection, averageSecondsBetweenSamples);
     }
 }

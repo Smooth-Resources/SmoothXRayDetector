@@ -11,6 +11,11 @@ detections:
       min-samples: 5
       max-samples: 10 # Oldest samples will be removed if the amount is higher than this value
       min-seconds: 30 # If a player has a lower average than this, it will be considered suspicious
+    on-detection:
+      send-discord-webhook: true
+      commands:
+        - "kick %player% You are suspected of using X-Ray!"
+      staff-notification: true
   diamond-detection:
     materials:
       - "diamond_ore"
@@ -24,3 +29,21 @@ detections:
       min-samples: 8
       max-samples: 16
       min-seconds: 23
+    on-detection:
+      send-discord-webhook: true
+      commands:
+        - "kick %player% You are suspected of using X-Ray!"
+      staff-notification: true
+
+discord-webhook:
+  xray-detection:
+    url: "https://discord.com/api/webhooks/..."
+    avatar: "https://avatars.githubusercontent.com/u/142340007?s=400&u=0493b154fe0be3fc8f753c4b8035b5277fde69c2&v=4"
+    username: "SmoothXRayDetector"
+    title: "Possible X-Ray User Detected"
+    description: "%player% is probably using X-Ray! (detection: %detection%, average seconds: %average%)"
+    color:
+      r: 255
+      g: 0
+      b: 0
+
