@@ -14,6 +14,6 @@ public class PlayerQuitListener implements Listener {
 
     @EventHandler
     public void onQuit(PlayerQuitEvent event) {
-        userService.handleQuit(event.getPlayer());
+        userService.handleQuit(event.getPlayer().getUniqueId());
     }
 }

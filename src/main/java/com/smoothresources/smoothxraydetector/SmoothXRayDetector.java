@@ -4,6 +4,7 @@ import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.smoothresources.smoothbase.common.file.YAMLFile;
 import com.smoothresources.smoothbase.paper.file.PaperYAMLFile;
+import com.smoothresources.smoothbase.paper.task.PaperTaskManager;
 import com.smoothresources.smoothxraydetector.listener.BlockBreakListener;
 import com.smoothresources.smoothxraydetector.listener.PlayerJoinListener;
 import com.smoothresources.smoothxraydetector.listener.PlayerQuitListener;
@@ -24,7 +25,7 @@ public final class SmoothXRayDetector extends JavaPlugin {
         YAMLFile messages = new PaperYAMLFile(this, "messages");
 
         injector = Guice.createInjector(
-                new SmoothXRayDetectorModule(this),
+                new SmoothXRayDetectorModule(this, new PaperTaskManager(this)),
                 new ConfigurationModule(config, messages),
                 new UserModule()
         );
