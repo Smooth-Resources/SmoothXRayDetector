@@ -1,14 +1,14 @@
 detections:
   ancient-debris-detection:
     materials:
-      "ancient_debris"
+      - "ancient_debris"
     world: "world_nether"
     requirements:
       min-blocks-between-last: 4
       max-y: 25
       min-y: 8
     average-calculation:
-      min-samples: 45
+      min-samples: 5
       max-samples: 10 # Oldest samples will be removed if the amount is higher than this value
       min-seconds: 30 # If a player has a lower average than this, it will be considered suspicious
   diamond-detection:
